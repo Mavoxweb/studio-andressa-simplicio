@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* =============================================
+   DESIGN TOKENS — Andressa Simplicio Beauty Studio
+   ============================================= */
+@theme {
+  /* Brand Colors */
+  --color-rose-gold: #B76E79;
+  --color-rose-gold-light: #C8909A;
+  --color-rose-gold-dark: #96505B;
+  --color-eucalyptus: #587B6C;
+  --color-eucalyptus-light: #6E9985;
+  --color-eucalyptus-dark: #3F5C50;
+  --color-champagne: #D4AF37;
+  --color-champagne-light: #E8CA5C;
+  --color-off-white: #FAF8F5;
+  --color-cream: #F3EEE8;
+  --color-wood-brown: #8B5E3C;
+  --color-deep-dark: #1C1815;
+  --color-warm-gray: #6B6560;
+  --color-warm-gray-light: #9E9894;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Lato', system-ui, -apple-system, sans-serif;
+
+  /* Custom Spacing */
+  --spacing-section: 5rem;
+  --spacing-section-lg: 7.5rem;
+}
+
+/* =============================================
+   GLOBAL BASE STYLES
+   ============================================= */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-off-white);
+    color: var(--color-deep-dark);
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  p { margin: 0; }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: var(--font-body);
+  }
+}
+
+/* =============================================
+   COMPONENT UTILITIES
+   ============================================= */
+@layer components {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+
+  .container-site {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-site {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .grain-texture {
+    position: relative;
+  }
+
+  .grain-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* =============================================
+   CUSTOM UTILITIES
+   ============================================= */
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
